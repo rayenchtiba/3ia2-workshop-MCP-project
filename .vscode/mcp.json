@@ -1,0 +1,36 @@
+{
+  "servers": {
+    "calculator": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "mcp",
+        "python",
+        "calculator.py"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    },
+    "flight_server": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "run",
+        "flight_server.py"
+      ]
+    },
+    "multitool": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "mcp",
+        "python",
+        "main.py"
+      ],
+      "env": {
+        "PYTHONPATH": "${workspaceFolder}"
+      }
+    }
+  }
+}
