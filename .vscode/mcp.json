@@ -1,39 +1,23 @@
 {
   "servers": {
-    "calculator": {
-      "command": "uv",
-      "args": [
-        "run",
-        "--with", "mcp",
-        "python",
-        "calculator.py"],
-      "url": "https://mycalculator.fastmcp.app/mcp" ,
-      
-      
-      
-      "env": {
-        "PYTHONPATH": "${workspaceFolder}"
-      }
-    },
-    "flight_server": {
+    "sayHello": {
       "type": "stdio",
       "command": "uv",
-      "args": [
-        "run",
-        "flight_server.py"
-      ]
+      "args": ["run", "main.py"]
     },
-    "multitool": {
+    "calculator": {
+      "type": "http",
+      "url": "https://mycalculator.fastmcp.app/mcp"
+    },
+    "airport": {
+      "type": "stdio",
       "command": "uv",
-      "args": [
-        "run",
-        "--with", "mcp",
-        "python",
-        "main.py"
-      ],
-      "env": {
-        "PYTHONPATH": "${workspaceFolder}"
-      }
+      "args": ["run", "flights_server.py"]
+    },
+    "book": {
+      "type": "stdio",
+      "command": "uv",
+      "args": ["run", "openlibrary_server.py"]
     }
   }
 }

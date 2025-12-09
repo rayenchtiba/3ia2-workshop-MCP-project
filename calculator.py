@@ -1,55 +1,35 @@
-from mcp.server.fastmcp import FastMCP
+from fastmcp import FastMCP
 
-# Création du serveur MCP pour le calculateur
-calculator_mcp = FastMCP(
-    name="calculator"
-)
+# Créer une instance FastMCP
+mcp = FastMCP(name="MyCalculator")
 
-# Outil d'addition
-@calculator_mcp.tool()
-def add(a: float, b: float) -> str:
-    
-    try:
-        result = float(a) + float(b)
-        return f"Le résultat de {a} + {b} = {result}"
-    except ValueError:
-        return "Erreur: Veuillez entrer des nombres valides"
+# -------------------- ADD --------------------
+@mcp.tool()
+def add(a: float, b: float) -> float:
+    """Returns the sum of two numbers."""
+    return a + b
 
-# Outil de soustraction
-@calculator_mcp.tool()
-def subtraction(a: float, b: float) -> str:
-   
-    try:
-        result = float(a) - float(b)
-        return f"Le résultat de {a} - {b} = {result}"
-    except ValueError:
-        return "Erreur: Veuillez entrer des nombres valides"
+# -------------------- SUBTRACT --------------------
+@mcp.tool()
+def subtract(a: float, b: float) -> float:
+    """Subtracts b from a and returns the result."""
+    return a - b
 
-# Outil de multiplication
-@calculator_mcp.tool()
-def multiply(a: float, b: float) -> str:
-    
-    try:
-        result = float(a) * float(b)
-        return f"Le résultat de {a} × {b} = {result}"
-    except ValueError:
-        return "Erreur: Veuillez entrer des nombres valides"
+# -------------------- MULTIPLY --------------------
+@mcp.tool()
+def multiply(a: float, b: float) -> float:
+    """Multiplies two numbers and returns the result."""
+    return a * b
 
-# Outil de division
-@calculator_mcp.tool()
-def divide(a: float, b: float) -> str:
-    
-    try:
-        a_float = float(a)
-        b_float = float(b)
-        
-        if b_float == 0:
-            return "Erreur: Division par zéro impossible"
-        
-        result = a_float / b_float
-        return f"Le résultat de {a} ÷ {b} = {result}"
-    except ValueError:
-        return "Erreur: Veuillez entrer des nombres valides"
-    
+# -------------------- DIVIDE --------------------
+@mcp.tool()
+def divide(a: float, b: float) -> float:
+    """Divides a by b and returns the result."""
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a / b
+
+# -------------------- RUN SERVER --------------------
 if __name__ == "__main__":
-    calculator_mcp.run(transport="http")  
+    mcp.run(transport="http")  # Tu peux changer en "sse" si besoin
+
