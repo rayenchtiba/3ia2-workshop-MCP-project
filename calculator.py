@@ -50,3 +50,6 @@ def divide(a: float, b: float) -> str:
         return f"Le résultat de {a} ÷ {b} = {result}"
     except ValueError:
         return "Erreur: Veuillez entrer des nombres valides"
+    
+if __name__ == "__main__":
+    calculator_mcp.run(transport="http")  

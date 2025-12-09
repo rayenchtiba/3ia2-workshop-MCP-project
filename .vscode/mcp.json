@@ -6,8 +6,11 @@
         "run",
         "--with", "mcp",
         "python",
-        "calculator.py"
-      ],
+        "calculator.py"],
+      "url": "https://mycalculator.fastmcp.app/mcp" ,
+      
+      
+      
       "env": {
         "PYTHONPATH": "${workspaceFolder}"
       }
